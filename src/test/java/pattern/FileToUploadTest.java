@@ -1,30 +1,21 @@
-package builder_patern;
+package pattern;
 
 import static org.junit.Assert.*;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import patternbuilder.FileToUpload;
-import patternbuilder.UploadHandler;
+import pattern.builder.FileToUpload;
 
 public class FileToUploadTest {
-	private static UploadHandler uploadHandler;
 	private static FileToUpload fileToUpload;
 
-	@BeforeClass
-	public static void initUploadHandler() {
-		uploadHandler = new UploadHandler();
-		
-	}
-
 	@Test
-	public void checkFileToUploadObjectValues() {
+	public void checkBuilderValues() {
 		long size = 3;
 		byte[] fileContent = { 1, 2, 3 };
 		fileToUpload = new FileToUpload.Builder("fileName", "contentMimeType", "locale").fileSize(size)
 				.fileContent(fileContent).build();
-		uploadHandler.doUpload(fileToUpload);
 		assertEquals(fileToUpload.getFileName(), "fileName");
 		assertEquals(fileToUpload.getContentMimeType(), "contentMimeType");
 		assertEquals(fileToUpload.getLocale(), "locale");
@@ -33,7 +24,6 @@ public class FileToUploadTest {
 	@Test(expected = IllegalArgumentException.class)
 	public void missingFileContentAndFileSize() {
 		fileToUpload = new FileToUpload.Builder("fileName", "contentMimeType", "locale").build();
-		uploadHandler.doUpload(fileToUpload);
 	}
 
 	@Test(expected = IllegalArgumentException.class)
@@ -42,6 +32,20 @@ public class FileToUploadTest {
 		byte[] fileContent = { 1, 2, 3, 4 };
 		fileToUpload = new FileToUpload.Builder("fileName", "contentMimeType", "locale").fileSize(size)
 				.fileContent(fileContent).build();
-		uploadHandler.doUpload(fileToUpload);
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void missingFileName() {
+		fileToUpload = new FileToUpload.Builder(null, "contentMimeType", "locale").build();
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void missingContentMimeType() {
+		fileToUpload = new FileToUpload.Builder("fileName", null, "locale").build();
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void missingLocale() {
+		fileToUpload = new FileToUpload.Builder("fileName", "contentMimeType", null).build();
 	}
 }

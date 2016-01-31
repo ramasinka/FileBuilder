@@ -1,4 +1,4 @@
-package patternbuilder;
+package pattern.builder;
 
 public class FileToUpload {
 	private final String fileName; // required
@@ -81,10 +81,26 @@ public class FileToUpload {
 			this.fileSize = fileSize;
 			return this;
 		}
-
+		
 		public FileToUpload build() {
+			if (fileName == null) {
+				throw new IllegalArgumentException("Missing file name");
+			}
+			if (contentMimeType == null) {
+				throw new IllegalArgumentException("Missingcontent mime type");
+			}
+			if (locale == null) {
+				throw new IllegalArgumentException("Missing locale");
+			}
+			if (fileContent == null && fileSize == null) {
+				throw new IllegalArgumentException("Missing file content and filesize");
+			}
+			if (fileContent != null && fileSize != null) {
+				if (fileSize != fileContent.length) {
+					throw new IllegalArgumentException("File size and file content length is not equal ");
+				}
+			}
 			return new FileToUpload(this);
 		}
-
 	}
 }

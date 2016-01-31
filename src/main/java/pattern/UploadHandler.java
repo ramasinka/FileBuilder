@@ -1,4 +1,6 @@
-package patternbuilder;
+package pattern;
+
+import pattern.builder.FileToUpload;
 
 public class UploadHandler {
 	public void doUpload(FileToUpload fileToUpload) {
@@ -8,7 +10,7 @@ public class UploadHandler {
 		if (fileToUpload.getContentMimeType() == null) {
 			throw new IllegalArgumentException("Missingcontent mime type");
 		}
-		if (fileToUpload.getContentMimeType() == null) {
+		if (fileToUpload.getLocale() == null) {
 			throw new IllegalArgumentException("Missing locale");
 		}
 		if (fileToUpload.getFileContent() == null && fileToUpload.getFileSize() == null) {
