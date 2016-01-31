@@ -93,7 +93,7 @@ public class FileToUpload {
 				throw new IllegalArgumentException("Missing locale");
 			}
 			if (fileContent == null && fileSize == null) {
-				throw new IllegalArgumentException("Missing file content and filesize");
+				throw new IllegalArgumentException("File content or fileSize should be specified");
 			}
 			if (fileContent != null && fileSize != null) {
 				if (fileSize != fileContent.length) {

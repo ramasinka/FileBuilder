@@ -8,13 +8,13 @@ public class UploadHandler {
 			throw new IllegalArgumentException("Missing file name");
 		}
 		if (fileToUpload.getContentMimeType() == null) {
-			throw new IllegalArgumentException("Missingcontent mime type");
+			throw new IllegalArgumentException("Missing content mime type");
 		}
 		if (fileToUpload.getLocale() == null) {
 			throw new IllegalArgumentException("Missing locale");
 		}
 		if (fileToUpload.getFileContent() == null && fileToUpload.getFileSize() == null) {
-			throw new IllegalArgumentException("Missing file content and filesize");
+			throw new IllegalArgumentException("File content or fileSize should be specified");
 		}
 		if (fileToUpload.getFileContent() != null && fileToUpload.getFileSize() != null) {
 			if (fileToUpload.getFileSize() != fileToUpload.getFileContent().length) {
