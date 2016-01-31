@@ -1,4 +1,4 @@
-package pattern;
+package pattern.builder;
 
 import static org.junit.Assert.*;
 
