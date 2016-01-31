@@ -1,4 +1,4 @@
-package builder_patern;
+package pattern;
 
 /**
  * Hello world!

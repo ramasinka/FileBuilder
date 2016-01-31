@@ -5,6 +5,9 @@ import static org.junit.Assert.*;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import pattern.FileToUpload;
+import pattern.UploadHandler;
+
 public class FileToUploadTest {
 	private static UploadHandler uploadHandler;
 	private static FileToUpload fileToUpload;
@@ -12,6 +15,7 @@ public class FileToUploadTest {
 	@BeforeClass
 	public static void initUploadHandler() {
 		uploadHandler = new UploadHandler();
+		
 	}
 
 	@Test
