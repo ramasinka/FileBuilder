@@ -1,4 +1,4 @@
-package pattern;
+package patternbuilder;
 
 public class FileToUpload {
 	private final String fileName; // required
