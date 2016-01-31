@@ -87,7 +87,7 @@ public class FileToUpload {
 				throw new IllegalArgumentException("Missing file name");
 			}
 			if (contentMimeType == null) {
-				throw new IllegalArgumentException("Missingcontent mime type");
+				throw new IllegalArgumentException("Missing content mime type");
 			}
 			if (locale == null) {
 				throw new IllegalArgumentException("Missing locale");
